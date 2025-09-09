@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Access System - College Event Management</title>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4364F7, #201B3A);
+            background-size: 200% 200%;
+            animation: backgroundMove 8s ease infinite alternate;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        .access-container {
+            background: #230D0D;
+            /* Deep Brown */
+            padding: 40px 60px;
+            border-radius: 16px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        #welcomeText {
+            font-size: 24px;
+            font-weight: bold;
+            color: #F71C1C;
+            /* Bright Red */
+            margin-bottom: 30px;
+            min-height: 32px;
+        }
+        
+        .btn {
+            display: inline-block;
+            width: 180px;
+            padding: 14px 0;
+            margin: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .btn.admin {
+            background-color: #083D1F;
+            /* Dark Green */
+        }
+        
+        .btn.user {
+            background-color: #4364F7;
+            /* Blue */
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #F71C1C;
+            /* Hover: Bright Red */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 600px) {
+            .access-container {
+                padding: 30px 20px;
+            }
+            .btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="access-container">
+        <h1 id="welcomeText">Loading...</h1>
+
+        <a href="http://localhost/college-event/admin/login.php" class="btn admin" onclick="playClick()">
+            <i class="fas fa-user-shield"></i> Admin Login
+        </a>
+        <a href="http://localhost/college-event/user_login.php" class="btn user" onclick="playClick()">
+            <i class="fas fa-user"></i> User Login
+        </a>
+    </div>
+
+    <!-- Optional Click Sound -->
+    <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1d64e07e3f.mp3?filename=mouse-click-153941.mp3" preload="auto"></audio>
+
+    <script>
+        // Typing animation
+        window.onload = () => {
+            const text = "Welcome to Strange Verse";
+            let i = 0;
+            const el = document.getElementById("welcomeText");
+            el.textContent = "";
+            const typing = setInterval(() => {
+                el.textContent += text[i];
+                i++;
+                if (i === text.length) clearInterval(typing);
+            }, 50);
+        };
+
+        // Play sound on click
+        function playClick() {
+            document.getElementById('clickSound').play();
+        }
+    </script>
+
+</body>
+
+</html>
